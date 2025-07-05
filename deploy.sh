@@ -15,6 +15,6 @@ tmux new-session -d -s $SESSION
 
 # Start backend in a new window
 tmux new-window -t $SESSION -n 'backend'
-tmux send-keys -t $SESSION:1 'pip install -r requirements.txt --break-system-packages && python app.py' C-m
+tmux send-keys -t $SESSION:1 'source venv/bin/activate && pip install -r requirements.txt --break-system-packages && python main.py' C-m
 
 echo "Deployment started in tmux session: $SESSION"
