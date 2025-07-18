@@ -3,7 +3,7 @@ import json
 
 from functools import wraps
 
-from flask import Flask, request, Response, jsonify
+from flask import Flask, request, Response, render_template
 from flask_cors import CORS
 
 from filelock import FileLock
@@ -43,7 +43,7 @@ def add_money():
 @app.route("/", methods=["GET"])
 @db_context
 def money_counter():
-    return jsonify(app.config["db"])
+    return render_template("index.html", money=app.config["db"]["money"])
 
 def init_db():
     if not os.path.isfile(DB_FILE_PATH):

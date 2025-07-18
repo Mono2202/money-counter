@@ -1,0 +1,44 @@
+body {
+  background-image: url('https://www.transparenttextures.com/patterns/grey-wash-wall.png');
+  background-color: #ffc0cb;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #800080;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  background: rgba(255, 255, 255, 0.9);
+  margin: 40px auto;
+  width: 700px;
+  border: 5px dotted #ff69b4;
+  padding: 20px;
+  box-shadow: 0 0 20px hotpink;
+}
+
+.sparkle-text {
+  font-size: 40px;
+  font-weight: bold;
+  color: #ff69b4;
+  animation: glitter 1s infinite alternate;
+}
+
+.dollar-gif {
+  width: 200px;
+  margin: 20px 0;
+}
+
+.rainbow-text {
+  font-size: 28px;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+@keyframes glitter {
+  from { text-shadow: 0 0 5px white; }
+  to { text-shadow: 0 0 20px gold; }
+}
