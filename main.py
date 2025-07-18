@@ -9,12 +9,16 @@ from flask_cors import CORS
 from filelock import FileLock
 
 DB_FILE_PATH = "db.json"
-INITIAL_MONEY = {"money": 0} 
+INITIAL_MONEY = {"money": 0, "overall_money": 0} 
 DEFAULT_JSON_INDENT = 4
 DB_LOCK = FileLock("db.json.lock")
 
 app = Flask(__name__)
 CORS(app)
+
+def _add_to_overall(amount: int):
+    if amount > 0:
+        app.config["db"]["overall_money"] += amount
 
 def db_context(func):
     @wraps(func)
@@ -33,6 +37,7 @@ def db_context(func):
 def add_money():
     amount = request.args.get("amount", type=int)
     app.config["db"]["money"] += amount
+    _add_to_overall(amount)
     return Response(status=200)
 
 @app.route("/", methods=["GET"])
